@@ -13,14 +13,14 @@ train = data[:int(len(data)*p),:]
 test = data[int(len(data)*p):,:]
 
 from keras.models import Sequential #导入神经网络初始化函数
-from keras.layers.core import Dense, Activation #导入神经网络层函数、激活函数
+from keras.layers.core import Dense, Activation, Input #导入神经网络层函数、激活函数
 
 netfile = '../tmp/net.model' #构建的神经网络模型存储路径
 
 net = Sequential() #建立神经网络
-net.add(Dense(3, 10)) #添加输入层（3节点）到隐藏层（10节点）的连接
+net.add(Dense(10, input_dim = 3)) #添加输入层（3节点）到隐藏层（10节点）的连接
 net.add(Activation('relu')) #隐藏层使用relu激活函数
-net.add(Dense(10, 1)) #添加隐藏层（10节点）到输出层（1节点）的连接
+net.add(Dense(1, input_dim = 10)) #添加隐藏层（10节点）到输出层（1节点）的连接
 net.add(Activation('sigmoid')) #输出层使用sigmoid激活函数
 net.compile(loss = 'binary_crossentropy', optimizer = 'adam', class_mode = "binary") #编译模型，使用adam方法求解
 
