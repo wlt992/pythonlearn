@@ -16,5 +16,5 @@ index2 = data['SUM_YR_2'] != 0
 index3 = (data['SEG_KM_SUM'] == 0) & (data['avg_discount'] == 0) #该规则是“与”
 data = data[index1 | index2 | index3] #该规则是“或”
 
-from pandas import ExcelWriter
-data.to_excel(cleanedfile, encoding = 'utf-8') #导出结果
+# from pandas import ExcelWriter
+data.to_csv(cleanedfile, encoding = 'utf-8') #导出结果
